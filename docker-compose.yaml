@@ -1,0 +1,29 @@
+version: "3"
+services:
+  postgis:
+    image: kartoza/postgis
+    deploy:
+      restart_policy:
+        condition: on-failure
+    ports:
+      - "25432:5432"
+    volumes:
+      - "/docker-data/postgis:/var/lib/postgresql"
+    volumes:
+      - "/docker-data/postgis:/var/lib/postgresql"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -p 25431"]
+      interval: 30s
+      timeout: 30s
+      retries: 3
+    networks:
+      - net
+
+networks:
+  net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      -
+        subnet: 172.18.0.0/16  
