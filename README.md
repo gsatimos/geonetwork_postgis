@@ -54,3 +54,6 @@ https://hub.docker.com/_/geonetwork/
 Postgis container:
 https://github.com/kartoza/docker-postgis
 
+
+### Issues:
+- geonetwork container won't run if it's databases have already been initialized
